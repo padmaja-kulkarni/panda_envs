@@ -205,6 +205,15 @@ def RegisterOpenAI_Ros_Env(task_env, max_episode_steps=10000):
         from openai_ros.task_envs.wamv import wamv_nav_twosets_buoys
 
     # Add here your Task Envs to be registered
+    elif task_env == 'PandaTest-v0':
+        register(
+            id=task_env,
+            entry_point='openai_ros.task_envs.panda.panda_test_task:PandaTestEnv',
+            max_episode_steps=max_episode_steps,
+        )
+        # 50
+        # We have to import the Class that we registered so that it can be found afterwards in the Make
+        from openai_ros.task_envs.panda import panda_test_task
     else:
         result = False
 
